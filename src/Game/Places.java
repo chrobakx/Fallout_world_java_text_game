@@ -1,23 +1,37 @@
 package Game;
 
 public enum Places {
-    ABANDONED_CABIN,
-    SUPER_DUPER_MART,
-    RED_ROCKET,
-    ABANDONED_BUILDING,
-    ABANDONED_FACTORY,
-    ATOMATOYS_WAREHOUSE,
-    BLAMCO_FACTORY,
-    CORVEGA_FACTORY,
-    HOLY_HEART_HOSPITAL,
-    LAKEVILLE_LIBRARY,
-    MACHINE_PARTS_FACTORY,
-    MASS_CHEMICAL_BUILDING,
-    NUKA_COLA_PLANT,
-    OFFICE_BUILDING,
-    OLD_CANDY_FACTORY,
-    OLD_WAREHOUSE,
-    RAIDER_CAMP,
-    ROBCO_PLANT,
-    RUINED_LIBRARY;
+    ABANDONED_CABIN("Abandoned cabin"),
+    SUPER_DUPER_MART("Super duper mart"),
+    RED_ROCKET("Red rocket"),
+    ABANDONED_BUILDING("Abandoned building"),
+    ABANDONED_FACTORY("Abandoned factory"),
+    ATOMATOYS_WAREHOUSE("AtomaToys warehouse"),
+    BLAMCO_FACTORY("Blamco factory"),
+    CORVEGA_FACTORY("Corvega factory"),
+    HOLY_HEART_HOSPITAL("Holy heart hospital"),
+    LAKEVILLE_LIBRARY("Lakeville library"),
+    MACHINE_PARTS_FACTORY("Machine parts factory"),
+    MASS_CHEMICAL_BUILDING("Mass chemical building"),
+    NUKA_COLA_PLANT("Nuka cola plant"),
+    OFFICE_BUILDING("Office building"),
+    OLD_CANDY_FACTORY("Old candy factory"),
+    OLD_WAREHOUSE("Old warehouse"),
+    RAIDER_CAMP("Raider camp"),
+    ROBCO_PLANT("Robco plant"),
+    RUINED_LIBRARY("Ruined library");
+
+    private final String name;
+
+    Places(String name) {
+        this.name = name;
+    }
+
+    public static Places getRandom() {
+        return values()[(int) (Math.random() * values().length)];
+    }
+
+    @Override public String toString() {
+        return name;
+    }
 }
