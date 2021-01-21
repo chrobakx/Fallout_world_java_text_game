@@ -1,10 +1,13 @@
 package Game;
 
-import static Game.Enemies.getRandom;
+import static Game.Enemies.getRandomEnemies;
+import static Game.Places.getRandomPlace;
+import static Game.Actions.printText;
+import static Game.Random.randomGenerator;
 
 public class Main {
     public static void main(String[] args) {
-        Actions actions = new Actions();
+        Player player = new Player();
 
         System.out.println("\n" +
                 "╭╮╭╮╭╮╱╱╭╮╱╱╱╱╱╱╱╱╱╱╱╱╱╱╭╮╱╱╱╱╭━━━╮╱╱╭╮╭╮╱╱╱╱╱╱╭╮╱╱╱╱╱╱╱╱╱╱╱╭╮╱╱╭╮\n" +
@@ -13,7 +16,8 @@ public class Main {
                 "┃╰╯╰╯┃┃━┫┃┃╭━┫╭╮┃╰╯┃┃━┫╱┃┃┃╭╮┃┃╭━━┫╭╮┃┃┃┃┃╭╮┃┃┃┃┃╱┃╰╯╰╯┃╭╮┃╭┫┃┃╭╮┃\n" +
                 "╰╮╭╮╭┫┃━┫╰┫╰━┫╰╯┃┃┃┃┃━┫╱┃╰┫╰╯┃┃┃╱╱┃╭╮┃╰┫╰┫╰╯┃╰╯┃╰╮╰╮╭╮╭┫╰╯┃┃┃╰┫╰╯┃\n" +
                 "╱╰╯╰╯╰━━┻━┻━━┻━━┻┻┻┻━━╯╱╰━┻━━╯╰╯╱╱╰╯╰┻━┻━┻━━┻━━┻━╯╱╰╯╰╯╰━━┻╯╰━┻━━╯");
-        System.out.println(getRandom());
-
+        printText("On your journey you found " + getRandomPlace() + ". Inside the building is hiding "
+                + getRandomEnemies());
+        System.out.println(player.getMaxHp(randomGenerator()));
     }
 }

@@ -27,7 +27,7 @@ public enum Places {
         this.name = name;
     }
 
-    public static Places getRandom() {
+    public static Places getRandomPlace() {
         return values()[(int) (Math.random() * values().length)];
     }
 

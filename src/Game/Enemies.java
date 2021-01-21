@@ -35,7 +35,7 @@ public enum Enemies {
         this.name = name;
     }
 
-    public static Enemies getRandom() {
+    public static Enemies getRandomEnemies() {
         return values()[(int) (Math.random() * values().length)];
     }
 

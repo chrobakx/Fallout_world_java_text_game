@@ -1,15 +1,9 @@
 package Game;
 
+import java.util.concurrent.ThreadLocalRandom;
+
 public class Random {
-    public Random getRandom() {
-        return random;
+    static int randomGenerator() {
+        return ThreadLocalRandom.current().nextInt(50);
     }
-
-    public void setRandom(Random random) {
-        this.random = random;
-    }
-
-    private Random random = new Random();
-
-
 }
