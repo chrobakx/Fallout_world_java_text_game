@@ -2,10 +2,14 @@ package Game;
 
 public abstract class Creature {
     private int maxHp;
-    private int maxAttack;
-    private int minAttack;
+    private int attack;
     private int level;
     private int currentHp;
 
-    public abstract void getMaxHp(int randomGenerator);
+    public abstract int getMaxHp();
+
+    public abstract int getAttack();
+
+    public abstract int getCurrentHp();
+
 }

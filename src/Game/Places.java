@@ -23,15 +23,9 @@ public enum Places {
 
     private final String name;
 
-    Places(String name) {
-        this.name = name;
-    }
+    Places(String name) { this.name = name; }
 
-    public static Places getRandomPlace() {
-        return values()[(int) (Math.random() * values().length)];
-    }
+    public static Places getRandomPlace() { return values()[(int) (Math.random() * values().length)]; }
 
-    @Override public String toString() {
-        return name;
-    }
+    @Override public String toString() { return name; }
 }
