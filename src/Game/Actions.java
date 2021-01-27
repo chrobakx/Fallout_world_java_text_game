@@ -1,7 +1,7 @@
 package Game;
 
 public class Actions {
-    public static void printText(Object o){
+    public static void print(Object o){
         System.out.println(o);
     }
 }

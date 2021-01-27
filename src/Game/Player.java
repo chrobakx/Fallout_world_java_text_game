@@ -4,24 +4,16 @@ import java.util.Random;
 
 public class Player extends Creature{
     Random random = new Random();
-    private int maxHp = random.nextInt(10) + 80;
-    private int attack = random.nextInt(35);
-    private int currentHp;
+    public int maxHp;
+    private int attack;
 
     public int getMaxHp() {
+        maxHp = random.nextInt(10) + 80;
         return maxHp;
     }
 
     public int getAttack() {
+        attack = random.nextInt(35);
         return attack;
-    }
-
-    public int getCurrentHp() {
-        int currentHp = getMaxHp() - getAttack();
-        return currentHp;
-    }
-
-    public void setCurrentHp(int currentHp) {
-        this.currentHp = currentHp;
     }
 }

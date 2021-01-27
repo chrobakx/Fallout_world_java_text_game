@@ -4,7 +4,7 @@ import java.util.Scanner;
 
 import static Game.Enemies.getRandomEnemies;
 import static Game.Places.getRandomPlace;
-import static Game.Actions.printText;
+import static Game.Actions.print;
 
 public class Main {
     public static void main(String[] args) {
@@ -19,7 +19,7 @@ public class Main {
                 "┃╰╯╰╯┃┃━┫┃┃╭━┫╭╮┃╰╯┃┃━┫╱┃┃┃╭╮┃┃╭━━┫╭╮┃┃┃┃┃╭╮┃┃┃┃┃╱┃╰╯╰╯┃╭╮┃╭┫┃┃╭╮┃\n" +
                 "╰╮╭╮╭┫┃━┫╰┫╰━┫╰╯┃┃┃┃┃━┫╱┃╰┫╰╯┃┃┃╱╱┃╭╮┃╰┫╰┫╰╯┃╰╯┃╰╮╰╮╭╮╭┫╰╯┃┃┃╰┫╰╯┃\n" +
                 "╱╰╯╰╯╰━━┻━┻━━┻━━┻┻┻┻━━╯╱╰━┻━━╯╰╯╱╱╰╯╰┻━┻━┻━━┻━━┻━╯╱╰╯╰╯╰━━┻╯╰━┻━━╯");
-        printText("You are one of the 200 vault dwellers from Vault 13. Your Vault got damaged by faulty \n" +
+        print("You are one of the 200 vault dwellers from Vault 13. Your Vault got damaged by faulty \n" +
                 "water purifier and you had been forced to leave.");
         // printText("On your journey you found " + getRandomPlace() + ". Inside the building is hiding " + getRandomEnemies());
         // printText(player.getMaxHp() + " text");
@@ -27,26 +27,36 @@ public class Main {
        // printText(player.getAttack() + " text");
        // printText(enemy.getMaxHp() + enemy.getCurrentHp() + " text");
 
-        printText("\nOn your journey you found " + getRandomPlace() + ". Inside the building is hiding " + getRandomEnemies());
-        System.out.println("\n\tYour HP: " + player.getMaxHp() + "\t\t\t\t1Enemy's HP: " + enemy.getMaxHp());
+        print("\n>On your journey you found " + getRandomPlace() + ". Inside the building is hiding " + getRandomEnemies());
+        print(">You drew your weapon: " + weapons.randomWeapon());
 
-        while (enemy.getMaxHp() > 0) {
-            System.out.println("\n\tWhat would you like to do?");
-            System.out.println("\t1. Attack");
-            System.out.println("\t2. Run!");
+        int enemyHealth = enemy.getMaxHp();
+        int playerHealth = player.getMaxHp();
+
+        print("\n\tYour HP: " + playerHealth + "\t\t\t\tEnemy's HP: " + enemyHealth);
+
+        while (enemyHealth > 0) {
+            print("\n\tWhat would you like to do?");
+            print("\t1. Attack");
+            print("\t2. Run!");
+            System.out.print(">");
 
             String input = sc.nextLine();
+            int enemyAttack = enemy.getAttack();
+            int playerAttack = player.getAttack();
+
+            print("\n\tYour HP: " + playerHealth + "\t\t\t\tEnemy's HP: " + enemyHealth);
 
             if (input.equals("1")) {
-                int playerHealth = player.getMaxHp() - enemy.getAttack();
-                int enemyHealth = enemy.getMaxHp() - player.getAttack();
-                System.out.println("\n\tYour HP: " + playerHealth + "\t\t\t\tEnemy's HP: " + enemyHealth);
-                System.out.println("\t> You strike the enemy for " + player.getAttack() + " damage.");
-                System.out.println("\t> You receive " + enemy.getAttack() + " in retaliation!");
+                enemyHealth = enemyHealth - playerAttack;
+                playerHealth = playerHealth - enemyAttack;
+
+                print("\t> You strike the enemy for " + playerAttack + " damage.");
+                print("\t> You receive " + enemyAttack + " in retaliation!");
             }
 
-            if (player.getMaxHp() < 1) {
-                System.out.println("\t> You have taken too much damage, you are too weak to go on!");
+            if (playerHealth < 1) {
+                print("\t> You have taken too much damage, you are too weak to go on!");
                 break;
             }
 
