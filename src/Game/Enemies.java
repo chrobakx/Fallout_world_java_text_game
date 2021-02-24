@@ -1,5 +1,10 @@
 package Game;
 
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+import java.util.Random;
+
 public enum Enemies {
     FERAL_GHOUL("Feral ghoul"),
     FERAL_GHOUL_ROAMER("Feral ghoul roamer"),
@@ -31,15 +36,9 @@ public enum Enemies {
 
     private final String name;
 
-    Enemies(String name) {
-        this.name = name;
-    }
+    Enemies(String name) { this.name = name; }
 
-    public static Enemies getRandomEnemies() {
-        return values()[(int) (Math.random() * values().length)];
-    }
+    public static Enemies getRandomEnemy() { return values()[(int) (Math.random() * values().length)]; }
 
-    @Override public String toString() {
-        return name;
-    }
+    @Override public String toString() { return name; }
 }
