@@ -12,6 +12,7 @@ public class Main {
         var player = new Player();
         var weapons = new Weapons();
         var enemy = new Enemy();
+        var leveling = new Leveling();
         System.out.println("\n" +
                 "╭╮╭╮╭╮╱╱╭╮╱╱╱╱╱╱╱╱╱╱╱╱╱╱╭╮╱╱╱╱╭━━━╮╱╱╭╮╭╮╱╱╱╱╱╱╭╮╱╱╱╱╱╱╱╱╱╱╱╭╮╱╱╭╮\n" +
                 "┃┃┃┃┃┃╱╱┃┃╱╱╱╱╱╱╱╱╱╱╱╱╱╭╯╰╮╱╱╱┃╭━━╯╱╱┃┃┃┃╱╱╱╱╱╭╯╰╮╱╱╱╱╱╱╱╱╱╱┃┃╱╱┃┃\n" +
@@ -22,8 +23,10 @@ public class Main {
         print("You are one of the 200 vault dwellers from Vault 13. Your Vault got damaged by faulty \n" +
                 "water purifier and you had been forced to leave.");
 
+        int playerHealth = player.getMaxHp();
 
         while (true) {
+            int enemyHealth = enemy.getMaxHp();
             Places place = getRandomPlace();
             Enemies enemyList = getRandomEnemy();
 
@@ -32,12 +35,12 @@ public class Main {
             var wep = new Weapons();
             System.out.println("Weapon inventory: " + wep.getWeaponsList());
             print(">You drew your weapon: " + weapons.randomWeapon());
-            int enemyHealth = enemy.getMaxHp();
-            int playerHealth = player.getMaxHp();
 
             print("\n\tYour HP: " + playerHealth + "\t\t\t\tEnemy's HP: " + enemyHealth);
+            print("Your current level is:  " + leveling.getLevel() + "" +
+                    "\nyour experience points: " + leveling.getCurXP());
 
-            while (enemyHealth > 0) {
+            while (enemyHealth > 1) {
                 print("\n\tWhat would you like to do?");
                 print("\t1. Attack");
                 print("\t2. Run!");
@@ -64,15 +67,20 @@ public class Main {
                     break;
                 }
             }
+            if (playerHealth < 1) {
+                System.out.println("\t>You limp out of the building, weak from the battle");
+                break;
+            }
 
            print("---------------------------------------------------------------------------------");
             print(" # " + enemyList + " was defeated! # ");
             print(" # You have " + playerHealth + " HP left. # ");
+            leveling.addXp(3);
 
             print("---------------------------------------------------------------------------------");
             print("What would you like to do?");
             print("1. Continue fighting");
-            print("2. Exit " + place);
+            print("2. Exit the building");
 
             String input = sc.nextLine();
 

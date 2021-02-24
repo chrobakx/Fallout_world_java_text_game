@@ -13,7 +13,7 @@ public class Player extends Creature{
     }
 
     public int getAttack() {
-        attack = random.nextInt(35);
+        attack = random.nextInt(45);
         return attack;
     }
 }
