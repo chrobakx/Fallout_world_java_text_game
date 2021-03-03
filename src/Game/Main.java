@@ -68,9 +68,9 @@ public class Main {
                     if (player.getStimpak() > 0) {
                         playerHealth += player.getStimpakHealth();
                         player.setStimpak(player.getStimpak() - 1);
-                        print("\t> You used a Stimpak, healing yourself for " + player.getStimpakHealth() + "."
+                        print("\t> You used a Stimpak, healing yourself for " + player.getStimpakHealth() + "HP."
                                 + "\n\t> You now have " + playerHealth + " HP."
-                                + "\n\t> You have " + player.getStimpak() + " health potions left. \n");
+                                + "\n\t> You have " + player.getStimpak() + " Stimpak(s) left. \n");
                     } else {
                         print("\t> You have no Stimpak left! Defeat enemies for a chance to get one!\n");
                     }
@@ -92,8 +92,8 @@ public class Main {
             print(" # You have " + playerHealth + " HP left. # ");
             if (Math.random() * 100 < player.getStimpakDropChance()) {
                 player.setStimpak(player.getStimpak() + 1);
-                print(" # The " + enemy + " dropped the health potion! # ");
-                print(" # You now have " + player.getStimpak() + " health potion(s). # ");
+                print(" # The " + enemyList + " dropped the Stimpak! # ");
+                print(" # You now have " + player.getStimpak() + " Stimpak(s). # ");
             }
             leveling.addXp(3);
 
