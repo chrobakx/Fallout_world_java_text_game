@@ -4,6 +4,10 @@ import java.util.*;
 import java.util.stream.Stream;
 
 public class Weapons {
+
+    //Create a weapon list from wich you will take a random drop based on the level you have.
+    //Then make a switch loop for chosen weapon and use appropriate amount for it
+    //Make enemies drop random ammunition for different weapon.
     private List<String> weaponsList = new ArrayList<>();
 
     private String[] weapList = {"knife", "spear", "pistol", "shotgun", "assaultRifle", "miniGun"

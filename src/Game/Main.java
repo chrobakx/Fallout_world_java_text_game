@@ -36,14 +36,15 @@ public class Main {
             System.out.println("Weapon inventory: " + wep.getWeaponsList());
             print(">You drew your weapon: " + weapons.randomWeapon());
 
-            print("\n\tYour HP: " + playerHealth + "\t\t\t\tEnemy's HP: " + enemyHealth);
+            print("\n\t\t\t  Your HP: " + playerHealth + "\t\t\t\tEnemy's HP: " + enemyHealth);
             print("Your current level is:  " + leveling.getLevel() + "" +
                     "\nyour experience points: " + leveling.getCurXP());
 
             while (enemyHealth > 1) {
                 print("\n\tWhat would you like to do?");
                 print("\t1. Attack");
-                print("\t2. Run!");
+                print("\t2. Use Stimpak");
+                print("\t3. Run!");
                 System.out.print(">");
 
                 String input = sc.nextLine();
@@ -63,18 +64,37 @@ public class Main {
                         print("\t> You have taken too much damage, you are too weak to go on!");
                         break;
                     }
-                } else if (input.equals("2")) {
-                    break;
+                }else  if (input.equals("2")) {
+                    if (player.getStimpak() > 0) {
+                        playerHealth += player.getStimpakHealth();
+                        player.setStimpak(player.getStimpak() - 1);
+                        print("\t> You used a Stimpak, healing yourself for " + player.getStimpakHealth() + "."
+                                + "\n\t> You now have " + playerHealth + " HP."
+                                + "\n\t> You have " + player.getStimpak() + " health potions left. \n");
+                    } else {
+                        print("\t> You have no Stimpak left! Defeat enemies for a chance to get one!\n");
+                    }
+
+                } else if (input.equals("3")) {
+                    print("\t> You run away from the " + enemyList + "!");
+                    continue;
+                } else {
+                    print("\tInvalid command");
                 }
             }
             if (playerHealth < 1) {
-                System.out.println("\t>You limp out of the building, weak from the battle");
+                print("\t>You limp out of the building, weak from the battle");
                 break;
             }
 
            print("---------------------------------------------------------------------------------");
             print(" # " + enemyList + " was defeated! # ");
             print(" # You have " + playerHealth + " HP left. # ");
+            if (Math.random() * 100 < player.getStimpakDropChance()) {
+                player.setStimpak(player.getStimpak() + 1);
+                print(" # The " + enemy + " dropped the health potion! # ");
+                print(" # You now have " + player.getStimpak() + " health potion(s). # ");
+            }
             leveling.addXp(3);
 
             print("---------------------------------------------------------------------------------");
@@ -92,7 +112,7 @@ public class Main {
             if (input.equals("1")) {
                 print("You continue on your adventure");
             } else {
-                print("You exited the place and returned to vault");
+                print("You exited the place and returned to wasteland");
                 break;
             }
         }
